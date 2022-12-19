@@ -23,6 +23,7 @@ ul {
 }
 .container {
     max-width: 1200px;
+    padding: 0 20px;
 }
 .mx-auto {
     margin: 0 auto;
@@ -40,7 +41,8 @@ nav {
 
     display: flex;
     justify-content:center;
-    gap: 5vw;
+    gap: 0 5vw;
+    flex-wrap: wrap;
 
     font-weight: 700;
     cursor: pointer;
@@ -62,6 +64,7 @@ nav .link-nav.active, nav .link-nav:hover {
     justify-content: center;
 
     margin: 20px 0 0 0;
+    padding: 0 20px;
 }
 
 #search input {
@@ -109,10 +112,10 @@ nav .link-nav.active, nav .link-nav:hover {
 }
 /* ============= LOADING  ============= */
 #loading {
-    margin: 20px auto;
     max-width: 300px;
 }
 .bar {
+    margin: 20px auto;
     background-color: #fce0de;
     min-width: 300px;
     min-height: 5px;
@@ -201,3 +204,10 @@ nav .link-nav.active, nav .link-nav:hover {
     color:#ffff;
     background: #ee773f;
 }
+
+@media screen and (max-width: 7680px) {
+    #list_word {
+        padding: 0 0 0 10px;
+    }
+  }
+  
