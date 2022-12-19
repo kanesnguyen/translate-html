@@ -42,16 +42,21 @@ $('#wordSearch').keypress(function (e) {
 async function getWords() {
     let result;
     try {
-        $("#loading").html(`
-        <div class="container">
-            <div class="bar"></div>
-        </div>`)
-        result = await $.ajax({
-            url: `https://api.onelook.com/words?${getUrlVars('type') || 'ml'}=${getUrlVars('word')}&qe=ml&md=dpfcy&max=10&rif=1&k=olthes_r4`,
-            type: 'GET',
-        });
-        $("#loading").html(``);
-        renderWords(result)
+        if (getUrlVars('word')) {
+            $("#loading").html(`
+            <div class="container">
+                <div class="bar"></div>
+            </div>`)
+            result = await $.ajax({
+                url: `https://api.onelook.com/words?${getUrlVars('type') || 'ml'}=${getUrlVars('word')}&qe=ml&md=dpfcy&max=10&rif=1&k=olthes_r4`,
+                type: 'GET',
+            });
+            $("#loading").html(``);
+        }
+        else {
+            $("#list_word_container h3").eq(0).html(`Không tìm thấy từ nào, hãy thử tìm kiếm!`)
+        }
+        renderWords(result || [])
     } catch (error) {
         console.error(error);
     }
