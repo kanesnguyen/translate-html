@@ -30,6 +30,10 @@ const tabs = [
 ];
 $( document ).ready(function() {
     for (const i of tabs) {
-        $("nav").eq(0).append(`<p class="link-nav ${i.slug === (getUrlVars('type') || '' ) ? 'active' : ''}" onclick="updateQuery('type','${i.slug}')">${i.label}</p>`)
+        $("nav").eq(0).append(`<p class="link-nav${i.slug === (getUrlVars('type') || '' ) ? ' active' : ''}" data="${i.slug}">${i.label}</p>`)
     }
+
+    $("nav p").click(function() {
+        updateQuery('type',`${$(this).attr('data')}`)
+    })
 });

@@ -1,26 +1,24 @@
-const pagination = {
-    page: 1,
-    pageSize: 10,
-    total: 50,
-}
-const renderPagination = () => {
+const renderPagination = (pagination) => {
     $("#pagination").html(`
-    <div class="arrow_left" onclick="updateQuery('page', '${(Number(getUrlVars('page')) - 1) < 1 ? 1 : Number(getUrlVars('page')) - 1}')">
+    <div id="arrow_left">
     <img src="../images/arrow-left.svg" alt="/"/>
     </div>
-    <div class="button_show">
-        
-    </div>
-    <div class="arrow_right" onclick="updateQuery('page', '${(Number(getUrlVars('page'))) * pagination.pageSize < pagination.total ? Number(getUrlVars('page')) + 1 : Number(getUrlVars('page'))}')">
+    <div id="button_show"></div>
+    <div id="arrow_right">
         <img src="../images/arrow-right.svg" alt="/"/>
     </div>
     `)
-}
-$(document).ready(function () {
-    if (getUrlVars('word')) {
-        renderPagination()
-        for (let i = 0; i < (pagination.total / pagination.pageSize); i++) {
-            $(".button_show").eq(0).append(`<button class="${(getUrlVars('page') || 1) == (i + 1) ? 'active' : ''}" onclick="updateQuery('page', '${i + 1}')">${i + 1}</button>`)
-        }
+    for (let i = 0; i < (pagination.total / pagination.pageSize); i++) {
+        $("#button_show").append(`<button class="${(getUrlVars('page') || 1) == (i + 1) ? 'active' : ''}" data-index="${i+1}">${i + 1}</button>`)
     }
-});
+    $(document).on("click", "#arrow_left", function() {
+        updateQuery('page', `${(Number(getUrlVars('page')) - 1) < 1 ? 1 : Number(getUrlVars('page')) - 1}`)
+    });
+    $(document).on("click", "#arrow_right", function() {
+        updateQuery('page', `${(Number(getUrlVars('page'))) * pagination.pageSize < pagination.total ? Number(getUrlVars('page')) + 1 : Number(getUrlVars('page'))}`)
+    });
+    $(document).on("click", "#button_show button", function() {
+        updateQuery('page', `${$(this).attr('data-index')}`)
+    });
+}
+    

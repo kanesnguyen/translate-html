@@ -74,7 +74,11 @@ nav .link-nav.active, nav .link-nav:hover {
     height: 40px;
     width: 450px;
     max-width: 80vw;
+    transition: all 0.3s ease-in-out;
 }
+#search input:focus {
+    border: 1px solid #ee773f;
+  }
 
 #search button {
     border: 1px solid #ee773f;
@@ -95,12 +99,14 @@ nav .link-nav.active, nav .link-nav:hover {
     cursor: pointer;
 }
 #list_word_container p {
-    margin: 10px 0 0 20px;
+    margin: 10px 0 0 10px;
 }
 #list_word li {
     margin: 10px 0 0 0 ;
 }
-
+#list_word h5 {
+    color: #ee773f;
+}
 /* ============= LOADING  ============= */
 #loading {
     margin: 20px auto;
@@ -160,7 +166,7 @@ nav .link-nav.active, nav .link-nav:hover {
     align-items: center;
     padding: 20px 0;
 }
-.arrow_left, .arrow_right {
+#arrow_left, #arrow_right {
     width: 20px;
     height: 20px;
     border-radius: 10px;
