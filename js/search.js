@@ -1,6 +1,8 @@
 const renderSearch = () => {
     $("#search").html(`
-        <input type="text" placeholder="Search" id="wordSearch" value="${getUrlVars('word') || ''}">
+        <div class="input_valid">
+            <input type="text" placeholder="Search" name="word" id="wordSearch" value="${getUrlVars('word') || ''}">
+        </div>
         <button type="submit">Search</button>
     `)
 }
@@ -27,8 +29,7 @@ const renderWords = (data) => {
 }
 
 const searchWord = () => {
-    const word = $('#wordSearch').val();
-    updateQuery('word', word);
+    validate('#wordSearch', 'isEmpty', 'updateQuery')
 }
 
 const research = (word) => {
@@ -64,7 +65,7 @@ async function getWords() {
             $("#list_word_container h3").eq(0).html(`Không tìm thấy từ nào, hãy thử tìm kiếm!`).css({"text-align": "center"});
         }
         renderWords(result || [])
-        renderPagination({page:1, pageSize:10, total:result.length})
+        renderPagination({page:1, pageSize:10, total:result?.length})
     } catch (error) {
         console.error(error);
     }

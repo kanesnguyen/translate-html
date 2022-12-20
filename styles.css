@@ -55,7 +55,10 @@ nav .link-nav.active, nav .link-nav:hover {
     color: #ee773f;
 }
 
-
+/* ============= INPUT VALID ============= */
+.input_valid {
+    position: relative;
+}
 /* ============= INPUT SEARCH ============= */
 #search {
     display: flex;
@@ -85,15 +88,21 @@ nav .link-nav.active, nav .link-nav:hover {
 
 #search button {
     border: 1px solid #ee773f;
-    background-color: #ee773f;
+    background-color: #ed976e;
     color:#fff;
     font-weight: 500;
     border-radius: 20px;
     outline: none;
     height: 40px;
     padding: 0px 25px;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
 }
 
+#search button:hover {
+    background-color: #ee773f;
+
+}
 /* ============= LIST WORD FINDED  ============= */
 #list_word_container {
     margin: 30px auto 0 ;
