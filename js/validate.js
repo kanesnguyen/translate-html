@@ -11,7 +11,7 @@ const validEmpty = (inputSelector, valid, message) => {
     const input = $(`${inputSelector}`)
     if (input.val().trim() !== '') {
          if (valid === 'updateQuery') { 
-            updateQuery(input.attr('name'), input.val().replaceAll("[^a-zA-Z0-9]", "") )
+            updateQuery(input.attr('name'), input.val().trim().replaceAll("[^a-zA-Z0-9]", "") )
          }
          return false;
     }
