@@ -79,7 +79,7 @@ nav .link-nav.active, nav .link-nav:hover {
 
     height: 40px;
     width: 450px;
-    max-width: 80vw;
+    max-width: 55vw;
     transition: all 0.3s ease-in-out;
 }
 #search input:focus {
@@ -214,9 +214,13 @@ nav .link-nav.active, nav .link-nav:hover {
     background: #ee773f;
 }
 
-@media screen and (max-width: 7680px) {
+@media screen and (max-width: 768px) {
     #list_word {
         padding: 0 0 0 10px;
     }
-  }
-  
+}
+@media screen and (max-width: 425px) {
+    #search {
+        gap: 10px;
+    }
+}

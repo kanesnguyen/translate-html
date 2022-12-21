@@ -9,7 +9,7 @@ const validate = (inputSelector, method, valid) => {
 
 const validEmpty = (inputSelector, valid, message) => {
     const input = $(`${inputSelector}`)
-    if (input.val() !== '') {
+    if (input.val().trim() !== '') {
          if (valid === 'updateQuery') { 
             updateQuery(input.attr('name'), input.val().replaceAll("[^a-zA-Z0-9]", "") )
          }
